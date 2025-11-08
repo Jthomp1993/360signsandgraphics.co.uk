@@ -1,0 +1,103 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"incremental": true,
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"paths": {
+			"@blocks/*": [
+				"./src/app/blocks/*"
+			],
+			"@components/*": [
+				"./src/app/components/*"
+			],
+			"@templates/*": [
+				"./src/app/templates/*"
+			],
+			"@hooks/*": [
+				"./src/app/hooks/*"
+			],
+			"@context/*": [
+				"./src/app/context/*"
+			],
+			"@actions/*": [
+				"./src/app/actions/*"
+			],
+			"@util/*": [
+				"./src/app/util/*"
+			],
+			"@lib/*": [
+				"./src/app/lib/*"
+			],
+			"@emailTemplates/*": [
+				"./src/app/emailTemplates/*"
+			],
+			"@payload/*": [
+				"./src/payload/*"
+			],
+			"@clients/*": [
+				"./src/clients/*"
+			],
+			"@payload-config": [
+				"./src/payload.config.ts"
+			],
+			"@i18n/*": [
+				"./src/i18n/*"
+			],
+			"@/*": [
+				"./src/*",
+				"!./src/app/blocks/*",
+				"!./src/app/components/*",
+				"!./src/payload/*",
+				"!./src/payload.config.ts",
+				"!./src/app/hooks/*",
+				"!./src/app/templates/*",
+				"!./src/app/lib/*",
+				"!./src/app/context/*",
+				"!./src/app/actions/*",
+				"!./src/clients/*",
+				"!./src/utils/*",
+				"!.src/i18n/*"
+			],
+			"react": [
+				"./node_modules/@types/react"
+			]
+		},
+		"target": "ES2017",
+		"typeRoots": [
+			"./types",
+			"./node_modules/@types"
+		]
+	},
+	"files": [
+		"./node_modules/gsap/types/index.d.ts"
+	],
+	"include": [
+		"globals.d.ts",
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

@@ -1,0 +1,63 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 70, 150;
+	overflow: visible;
+
+	.title {
+		@mixin h-base;
+		@mixin fluid-text 80, 160;
+		@mixin fluid-clamp margin-bottom, 25, 105;
+		position: relative;
+		z-index: 2;
+	}
+
+	.wrapper {
+	}
+
+	.carousel {
+		display: flex;
+		position: relative;
+		z-index: 2;
+	}
+
+	.carouselInner {
+		display: flex;
+		@mixin fluid-clamp gap, 16, 20;
+	}
+
+	.carouselItem {
+		padding: 27px 30px;
+		@mixin fluid-clamp width, 285, 425;
+		@mixin fluid-clamp min-height, 260, 375;
+		border-radius: 20px;
+		background-color: var(--purple);
+		color: var(--white);
+		flex-shrink: 0;
+		@mixin h-xxs;
+
+		em {
+			display: block;
+			color: var(--black);
+			@mixin fluid-clamp margin-bottom, 15, 25;
+			font-style: normal;
+		}
+
+		h6 {
+			font-size: inherit;
+		}
+	}
+
+	.modelContainer {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		width: 100%;
+		@mixin fluid-clamp width, 400, 915;
+		aspect-ratio: 1/1;
+		z-index: 0;
+		pointer-events: none;
+		transform: translate(40%, -50%);
+	}
+}

@@ -1,0 +1,71 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp margin-block, 80, 150;
+
+	.wrapper {
+	}
+
+	.subTitle {
+		@mixin sub-title;
+	}
+
+	.title {
+		@mixin h-xl;
+		text-align: center;
+		margin-bottom: -5%;
+	}
+
+	.items {
+		display: flex;
+		@mixin fluid-clamp gap, 12, 35;
+	}
+
+	.item {
+		min-width: 300px;
+		flex: 1;
+	}
+
+	.itemInner {
+		position: relative;
+		@mixin fluid-clamp border-radius, 24, 30;
+		@mixin fluid-clamp padding-block, 30, 40;
+		@mixin fluid-clamp padding-inline, 23, 30;
+		@mixin transition scale;
+		color: var(--white);
+		aspect-ratio: 397 / 525;
+		z-index: 1;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+
+		&:before {
+			@mixin fill;
+			content: "";
+			background: #000;
+			opacity: 0.1;
+		}
+
+		img {
+			@mixin fill;
+		}
+
+		&:hover {
+			scale: 0.95;
+		}
+	}
+
+	.itemTitle {
+		@mixin h-xs;
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		width: 100%;
+	}
+
+	.itemLink {
+		@mixin fill;
+		z-index: 3;
+	}
+}

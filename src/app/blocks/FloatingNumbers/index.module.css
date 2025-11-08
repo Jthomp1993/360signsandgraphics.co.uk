@@ -1,0 +1,75 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 80, 225;
+
+	.wrapper {
+	}
+
+	.subTitle {
+		@mixin sub-title;
+		justify-content: center;
+	}
+
+	.title {
+		@mixin h-xl;
+		text-align: center;
+	}
+
+	.items {
+		display: flex;
+		gap: 12px;
+		margin-top: 30px;
+
+		@media (md-up) {
+			position: absolute;
+			top: 50%;
+			left: var(--wrapper-padding);
+			width: calc(100% - var(--wrapper-padding) * 2);
+			grid-template-columns: repeat(3, 1fr);
+			display: grid;
+			gap: 80px;
+			margin-top: 0;
+		}
+	}
+
+	.item {
+		@mixin fluid-clamp width, 210, 320, 375, 960;
+		min-width: 210px;
+
+		&:hover .itemInner {
+			transform: scale(.95);
+		}
+
+		@media (md-up) {
+			position: relative;
+			top: 0;
+			left: 0;
+			width: auto;
+		}
+	}
+
+	.itemInner {
+		@mixin fluid-clamp border-radius, 22, 32;
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+		color: var(--black);
+		background-color: var(--blue);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		@mixin transition transform;
+	}
+
+	.itemNumber {
+		@mixin h-base;
+		@mixin fluid-text 100, 160;
+	}
+
+	.itemTitle {
+		@mixin paragraph-s;
+		padding: 0 20px;
+	}
+}

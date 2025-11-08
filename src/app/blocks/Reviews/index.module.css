@@ -1,0 +1,89 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 80, 150;
+
+	.wrapper {
+	}
+
+	.subTitle {
+		@mixin sub-title;
+	}
+
+	.title {
+		@mixin h-base;
+		@mixin fluid-text 80, 160;
+		text-align: center;
+	}
+
+	.items {
+		display: flex;
+		@mixin fluid-clamp gap, 12, 20;
+		@mixin fluid-clamp margin-top, 40, 130;
+	}
+
+	.item {
+		min-width: 300px;
+		flex: 1;
+
+		&.purple .itemInner {
+			background-color: var(--purple);
+		}
+
+		&.pink .itemInner {
+			background-color: var(--hot-pink);
+		}
+
+		&.teal .itemInner {
+			background-color: #3bcdd2;
+		}
+	}
+
+	.itemInner {
+		position: relative;
+		@mixin fluid-clamp border-radius, 40, 60;
+		@mixin fluid-clamp padding, 20, 30;
+		@mixin fluid-clamp padding-bottom, 45, 60;
+		color: var(--black);
+		overflow: hidden;
+		background-color: var(--purple);
+		position: relative;
+		z-index: 1;
+		@mixin transition scale;
+
+		&:hover {
+			scale: 0.95;
+		}
+	}
+	.itemImage {
+		@mixin fluid-clamp width, 56, 80;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-bottom: 12px;
+		background: #fff;
+
+		img {
+			display: block;
+			aspect-ratio: 1 / 1;
+			object-fit: contain;
+		}
+	}
+
+	.itemTitle {
+		@mixin paragraph-xl;
+		font-weight: 700;
+		line-height: 1.6;
+	}
+
+	.itemRole {
+		font-size: 18px;
+		line-height: 1.6;
+	}
+
+	.itemQuote {
+		@mixin fluid-text 14, 16;
+		line-height: 1.6;
+		@mixin fluid-clamp margin-top, 8, 17;
+	}
+}

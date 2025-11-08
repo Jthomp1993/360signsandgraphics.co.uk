@@ -1,0 +1,55 @@
+@define-mixin button-reset {
+	appearance: none;
+	font-family: inherit;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+	background: none;
+	color: inherit;
+	padding: 0;
+}
+
+@define-mixin fill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@define-mixin fluid-text $min-size, $max-size, $min-viewport: 375, $max-viewport: 1512, $relative: 100vw {
+	font-size: min(
+			calc($(min-size)px + ($(max-size) - $(min-size)) * (($(relative) - $(min-viewport)px) / ($(max-viewport) - $(min-viewport)))), 
+			$(max-size)px
+		);
+}
+
+@define-mixin fluid-clamp $property, $min-size, $max-size, $min-viewport: 375, $max-viewport: 1512, $relative: 100vw {
+	$(property): clamp(
+		$(min-size)px,
+		calc($(min-size)px + ($(max-size) - $(min-size)) * (($(relative) - $(min-viewport)px) / ($(max-viewport) - $(min-viewport)))),
+		$(max-size)px
+	);
+}
+
+@define-mixin transition $properties: all, $duration: 0.3s, $easing: cubic-bezier(0.6, 0, 0.2, 1) {
+	transition: $(duration) $(easing);
+	transition-property: $(properties);
+}
+
+@define-mixin transition-two $prop1, $prop2, $duration: 0.3s, $easing: cubic-bezier(0.6, 0, 0.2, 1) {
+	transition: $(duration) $(easing);
+	transition-property: $(prop1), $(prop2);
+}
+
+@define-mixin transition-three $prop1, $prop2, $prop3, $duration: 0.3s, $easing: cubic-bezier(0.6, 0, 0.2, 1) {
+	transition: $(duration) $(easing);
+	transition-property: $(prop1), $(prop2), $(prop3);
+}
+
+@define-mixin transition-four $prop1, $prop2, $prop3, $prop4, $duration: 0.3s, $easing: cubic-bezier(0.6, 0, 0.2, 1) {
+	transition: $(duration) $(easing);
+	transition-property: $(prop1), $(prop2), $(prop3), $(prop4);
+}

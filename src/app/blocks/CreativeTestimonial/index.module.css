@@ -1,0 +1,117 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+
+	.titleWrapper {
+	}
+
+	.subTitle {
+		@mixin sub-title;
+	}
+
+	.title {
+		@mixin h-xl;
+		text-align: center;
+	}
+
+	.meta {
+		display: none;
+
+		@media (md-up) {
+			display: flex;
+			gap: 40px;
+			align-items: center;
+			margin: 20px auto 0;
+
+			span {
+				height: 1px;
+				flex-grow: 1;
+				background-color: currentColor;
+			}
+		}
+	}
+
+	.name {
+		@mixin paragraph-m;
+	}
+
+	.role {
+		@mixin paragraph-label;
+	}
+
+	.slidesWrapper {
+	}
+
+	.slides {
+		position: relative;
+		height: 100vh;
+	}
+
+	.slide1,
+	.slide2 {
+		@mixin fill;
+	}
+
+	.slide1 {
+		display: flex;
+	}
+
+	.text {
+		@mixin h-l;
+		position: relative;
+		margin: auto;
+		text-align: center;
+		z-index: 1;
+	}
+
+	.quote {
+		position: absolute;
+		top: -0.5em;
+		left: -0.3em;
+		font-size: 0.695em;
+		width: 1em;
+		z-index: -1;
+	}
+
+	.slide2 {
+	}
+
+	.image {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, 0) translateY(60vh);
+		@mixin fluid-clamp width, 225, 425;
+		aspect-ratio: 425/560;
+		@mixin fluid-clamp border-radius, 17, 32;
+		z-index: 1;
+	}
+
+	.text1,
+	.text2 {
+		@mixin h-base;
+		@mixin fluid-text 50, 160;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.text1 {
+		left: 0;
+		bottom: calc(50% - 0.45em);
+
+		.textLine {
+			clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+		}
+	}
+
+	.text2 {
+		text-align: right;
+		right: 0;
+		top: calc(50% - 0.45em);
+
+		.textLine {
+			clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+		}
+	}
+}

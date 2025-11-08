@@ -1,0 +1,15 @@
+@value xs-up: min-width: 480px;
+@value sm-up: min-width: 768px;
+@value md-up: min-width: 960px;
+@value lg-up: min-width: 1024px;
+@value xl-up: min-width: 1230px;
+@value xxl-up: min-width: 1450px;
+@value xxxl-up: min-width: 1600px;
+
+@value xs-down: max-width: 479px;
+@value sm-down: max-width: 767px;
+@value md-down: max-width: 959px;
+@value lg-down: max-width: 1023px;
+@value xl-down: max-width: 1229px;
+@value xxl-down: max-width: 1449px;
+@value xxxl-down: max-width: 1599px;

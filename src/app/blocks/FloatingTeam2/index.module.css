@@ -1,0 +1,117 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 80, 225;
+
+	.wrapper {
+	}
+
+	.title {
+		@mixin h-xl;
+		text-align: center;
+	}
+
+	.items {
+		display: flex;
+		gap: 12px;
+		margin-top: 30px;
+
+		@media (md-up) {
+			position: absolute;
+			top: 50%;
+			left: var(--wrapper-padding);
+			width: calc(100% - var(--wrapper-padding) * 2);
+			grid-template-columns: repeat(3, 1fr);
+			display: grid;
+			gap: 80px;
+			margin-top: 0;
+		}
+	}
+
+	.item {
+		@mixin fluid-clamp width, 300, 390, 375, 960;
+		flex-shrink: 0;
+		aspect-ratio: 1 / 1;
+		min-width: 210px;
+		perspective: 1000px;
+		user-select: none;
+
+		@media (md-up) {
+			position: relative;
+			top: 0;
+			left: 0;
+			width: auto;
+		}
+	}
+
+	.itemInner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		@mixin fluid-clamp border-radius, 30, 40;
+		transform-style: preserve-3d;
+		cursor: pointer;
+
+		&:hover {
+			.cardFront,
+			.cardBack {
+				scale: 0.95;
+			}
+		}
+	}
+
+	.cardFront,
+	.cardBack {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		backface-visibility: hidden;
+		display: flex;
+		flex-direction: column;
+		@mixin fluid-clamp padding-block, 40, 46;
+		@mixin fluid-clamp padding-inline, 30, 40;
+		background-color: var(--purple);
+		color: var(--white);
+		border-radius: inherit;
+		overflow: hidden;
+		@mixin transition scale;
+	}
+
+	.cardBack {
+		transform: rotateY(180deg);
+	}
+
+	.itemLabel {
+		@mixin h-xs;
+		@mixin fluid-clamp margin-bottom, 18, 30;
+	}
+
+	.itemCopy {
+		@mixin fluid-clamp font-size, 16, 18;
+		line-height: 1.6;
+	}
+
+	.itemImage {
+		@mixin fill;
+	}
+
+	.itemButton {
+		@mixin button-reset;
+		@mixin h-base;
+		@mixin fluid-clamp font-size, 35, 40;
+		color: var(--black);
+		margin-top: auto;
+		text-align: left;
+	}
+
+	.itemName {
+		@mixin h-s;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		@mixin fluid-clamp padding-inline, 30, 40;
+		@mixin fluid-clamp bottom, 30, 60;
+	}
+}

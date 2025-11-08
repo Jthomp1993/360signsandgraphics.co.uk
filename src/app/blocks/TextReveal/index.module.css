@@ -1,0 +1,80 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-top, 70, 100;
+	@mixin fluid-clamp padding-bottom, 70, 400;
+
+	.titleWrapper {
+	}
+
+	.title {
+		@mixin h-base;
+		@mixin fluid-text 60, 160;
+		text-align: center;
+	}
+
+	.wrapper {
+		display: flex;
+
+		@media (md-up) {
+			align-items: center;
+		}
+	}
+
+	.globeContainer {
+		position: absolute;
+		top: 0%;
+		left: 50%;
+		transform: translate(-50%, -0%);
+		@mixin fluid-clamp width, 260, 550;
+		aspect-ratio: 1/1;
+
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	.content {
+		max-width: 645px;
+		flex-grow: 1;
+		overflow: hidden;
+		padding-top: 330px;
+
+		@media (md-up) {
+			padding: 310px 0 0;
+			margin-left: auto;
+		}
+	}
+
+	.contentInner {
+		transform: translateX(100%);
+	}
+
+	.copy {
+		> *:first-child {
+			margin-top: 0;
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+
+		p {
+			margin: 20px 0;
+
+			&:not([class^="paragraph"]) {
+				@mixin paragraph-m;
+			}
+		}
+
+		ol {
+			@mixin ol-styled;
+		}
+	}
+
+	.button {
+		@mixin fluid-clamp margin-top, 30, 50;
+	}
+}

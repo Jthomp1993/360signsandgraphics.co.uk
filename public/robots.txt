@@ -1,0 +1,25 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /admin
+
+# *
+User-agent: *
+Disallow: /bb-login
+
+# *
+User-agent: *
+Disallow: /campaign
+
+# *
+User-agent: *
+Disallow: /campaign/*
+
+# Host
+Host: https://buildthebandwagon.com
+
+# Sitemaps
+Sitemap: https://buildthebandwagon.com/sitemap.xml

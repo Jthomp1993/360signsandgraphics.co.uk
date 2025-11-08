@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "unused-imports"],
+  "rules": {
+    "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "import/no-unused-modules": [1, {"unusedExports": true}]
+  }
+} 

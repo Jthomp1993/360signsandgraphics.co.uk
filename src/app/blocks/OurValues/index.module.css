@@ -1,0 +1,81 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-top, 75, 150;
+
+	.title {
+		@mixin h-xl;
+		text-align: center;
+		@mixin fluid-clamp margin-bottom, 30, 80;
+	}
+
+	.items {
+		max-width: 1090px;
+		margin: 0 auto;
+	}
+
+	.item {
+		position: relative;
+		min-height: 70vh;
+		display: flex;
+		align-items: center;
+
+		&:nth-child(odd) {
+			.itemCopy {
+				right: 0;
+				left: auto;
+			}
+		}
+
+		&:nth-child(3n + 1) {
+			.itemCopy {
+				background-color: var(--purple);
+			}
+		}
+
+		&:nth-child(3n + 2) {
+			.itemCopy {
+				background-color: var(--blue);
+			}
+		}
+
+		&:nth-child(3n + 3) {
+			.itemCopy {
+				background-color: var(--hot-pink);
+			}
+		}
+	}
+
+	.itemInner {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+	}
+
+	.itemLabel {
+		@mixin h-base;
+		@mixin fluid-clamp font-size, 55, 160;
+		text-align: center;
+		width: 100%;
+	}
+
+	.itemCopy {
+		position: absolute;
+		top: 0;
+		left: 0;
+		line-height: 1.6;
+		width: 100%;
+		@mixin fluid-clamp max-width, 320, 450;
+		@mixin fluid-clamp font-size, 14, 16;
+		@mixin fluid-clamp padding, 20, 40;
+		@mixin fluid-clamp border-radius, 12, 16;
+		background-color: var(--purple);
+		color: var(--black);
+
+		@media (md-up) {
+			top: auto;
+			bottom: 10%;
+		}
+	}
+}

@@ -1,0 +1,76 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	padding-top: var(--top-header-h);
+	@mixin fluid-clamp margin-bottom, 55, 195;
+
+	.title {
+		@mixin h-m;
+	}
+
+	.copy {
+		line-height: 1.6;
+		@mixin fluid-text 16, 18;
+		@mixin fluid-clamp margin-top, 20, 80;
+		max-width: 425px;
+	}
+
+	.carousel {
+		position: relative;
+		display: flex;
+		width: 100%;
+		transform: rotate(-1.564deg);
+		@mixin fluid-clamp margin-top, 60, 145;
+	}
+
+	.carouselInner {
+		display: flex;
+		@mixin fluid-clamp column-gap, 4, 10;
+		position: relative;
+		height: auto;
+		will-change: transform;
+
+		img {
+			display: block;
+			width: auto;
+			max-width: none;
+			@mixin fluid-clamp height, 172, 345;
+			@mixin fluid-clamp border-radius, 8, 16;
+			pointer-events: none;
+			user-select: none;
+		}
+	}
+
+	.carouselStatus {
+		position: absolute;
+		bottom: 16px;
+		right: 16px;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 50%;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: opacity 0.3s ease;
+		opacity: 0;
+	}
+
+	.carousel:hover .carouselStatus {
+		opacity: 1;
+	}
+
+	.statusIndicator {
+		width: 10px;
+		height: 10px;
+		background-color: white;
+		border-radius: 2px;
+	}
+
+	.statusIndicator.paused {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+	}
+}

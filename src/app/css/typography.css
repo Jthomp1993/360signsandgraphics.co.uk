@@ -1,0 +1,151 @@
+@value sm-up, md-up, lg-up from '@/app/css/breakpoints.module.css';
+
+@define-mixin h-base {
+	font-family: var(--fk-screamer);
+	font-weight: 900;
+	line-height: 0.9;
+	text-transform: uppercase;
+}
+
+@define-mixin h-xxl {
+	@mixin h-base;
+	@mixin fluid-text 80, 380;
+}
+
+@define-mixin h-xl {
+	@mixin h-base;
+	@mixin fluid-text 65, 280;
+}
+
+@define-mixin h-l {
+	@mixin h-base;
+	font-weight: 700;
+	@mixin fluid-text 60, 200;
+}
+
+@define-mixin h-m {
+	@mixin h-base;
+	@mixin fluid-text 55, 160;
+}
+
+@define-mixin h-s {
+	@mixin h-base;
+	font-weight: 700;
+	@mixin fluid-text 50, 140;
+}
+
+@define-mixin h-xs {
+	@mixin h-base;
+	font-weight: 700;
+	@mixin fluid-text 40, 60;
+}
+
+@define-mixin h-xxs {
+	@mixin h-base;
+	@mixin fluid-text 32, 40;
+}
+
+@define-mixin paragraph-xxl {
+	line-height: 1.6;
+	font-size: 40px;
+}
+
+@define-mixin paragraph-xl {
+	line-height: 1.6;
+	@mixin fluid-text 20, 28;
+}
+
+@define-mixin paragraph-l {
+	line-height: 1.6;
+	@mixin fluid-text 18, 24;
+}
+
+@define-mixin paragraph-m {
+	line-height: 1.6;
+	@mixin fluid-text 16, 22;
+}
+
+@define-mixin paragraph-s {
+	line-height: 1.6;
+	@mixin fluid-text 14, 20;
+}
+
+@define-mixin paragraph-xs {
+	line-height: 1.6;
+	@mixin fluid-text 12, 18;
+}
+
+@define-mixin paragraph-label {
+	line-height: 1.6;
+	font-size: 16px;
+}
+
+@define-mixin sub-title {
+	@mixin fluid-text 14, 16;
+	line-height: 1.6;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
+	@mixin fluid-clamp margin-bottom, 25, 35;
+	font-weight: normal;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 12px;
+		height: 12px;
+		background-color: currentColor;
+	}
+}
+
+@define-mixin ol-styled {
+	@mixin paragraph-m;
+	margin: 30px 0;
+
+	li {
+		@mixin fluid-clamp padding-block, 16, 22;
+		position: relative;
+		counter-increment: list-item;
+		@mixin fluid-clamp padding-left, 38, 58;
+		border-bottom: 1px solid color-mix(in srgb, currentColor 50%, transparent);
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:before {
+			content: counter(list-item);
+			position: absolute;
+			left: 0;
+		}
+
+		&:nth-child(-n + 9):before {
+			content: "0" counter(list-item);
+		}
+	}
+}
+
+.paragraph-xxl {
+	@mixin paragraph-xxl;
+}
+
+.paragraph-xl {
+	@mixin paragraph-xl;
+}
+
+.paragraph-l {
+	@mixin paragraph-l;
+}
+
+.paragraph-m {
+	@mixin paragraph-m;
+}
+
+.paragraph-s {
+	@mixin paragraph-s;
+}
+
+.paragraph-xs {
+	@mixin paragraph-xs;
+}

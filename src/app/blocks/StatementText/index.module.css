@@ -1,0 +1,90 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	display: flex;
+	align-items: center;
+	@mixin fluid-clamp margin-block, 100, 200;
+
+	.wrapper {
+		margin: auto;
+		max-width: 100%;
+	}
+
+	.subTitle {
+		@mixin sub-title;
+	}
+
+	.title {
+		@mixin h-base;
+		@mixin fluid-text 40, 140, 450, 1512;
+		line-height: 1.1;
+		text-align: center;
+		margin: 0 -40px;
+		font-weight: 700;
+
+		span[data-text] {
+			--clip-path: 0 0, 0 0, 0 100%, 0% 100%;
+			transform: translateZ(0);
+			position: relative;
+
+			&:before {
+				content: attr(data-text);
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				clip-path: polygon(var(--clip-path));
+				white-space: nowrap;
+			}
+
+			span {
+				color: #2b2b2b;
+			}
+		}
+	}
+
+	.imageInText {
+		--full-width: calc(1em * 1.33);
+		--full-height: 0.857em;
+		position: relative;
+		display: inline-block;
+		height: var(--full-height);
+		width: 0;
+		top: 0.045em;
+		border-radius: 10px;
+		overflow: hidden;
+		will-change: width;
+		transition: 0.6s cubic-bezier(0.6, 0, 0.2, 1);
+		transition-property: width, margin;
+		margin: 0 0.1em;
+
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: var(--full-width);
+			height: var(--full-height);
+			transform: translate(-50%, -50%) scale(1.3);
+			transition: transform 0.6s cubic-bezier(0.6, 0, 0.2, 1);
+			max-width: none;
+		}
+
+		&.active {
+			width: var(--full-width);
+			margin: 0 0.2em;
+
+			img {
+				transform: translate(-50%, -50%) scale(1);
+			}
+		}
+	}
+
+	.buttonWrapper {
+		display: flex;
+		justify-content: center;
+		@mixin fluid-clamp margin-top, 52, 70;
+	}
+}

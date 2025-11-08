@@ -1,0 +1,73 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 45, 200;
+
+	.wrapper {
+		z-index: 1;
+
+		@media (sm-up) {
+			padding-left: calc(var(--wrapper-padding) * 2);
+		}
+	}
+
+	.quote {
+		position: relative;
+		@mixin h-base;
+		@mixin fluid-text 60, 140;
+		@mixin fluid-clamp padding-top, 40, 90;
+		@mixin fluid-clamp margin-bottom, 20, 60;
+		font-weight: 700;
+		min-height: 390px;
+		max-width: 1090px;
+
+		&:before {
+			content: "“";
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: var(--accent-color, #9340ff);
+			@mixin fluid-text 120, 280;
+		}
+
+		@media (sm-up) {
+			padding-top: 0;
+			min-height: auto;
+
+			&::before {
+				left: auto;
+				right: calc(100% + 0.15em);
+			}
+		}
+	}
+
+	.name {
+		@mixin paragraph-m;
+	}
+
+	.role {
+		font-size: 16px;
+		line-height: 1.6;
+		@mixin fluid-clamp margin-top, 5, 7;
+	}
+
+	.image {
+		position: absolute;
+		top: 90px;
+		right: 0;
+		@mixin fluid-clamp width, 210, 533;
+		@mixin fluid-clamp border-radius, 16, 32;
+		transform: rotate(3deg);
+		overflow: hidden;
+		z-index: -1;
+
+		img {
+			aspect-ratio: 533 / 708;
+		}
+
+		@media (sm-up) {
+			top: -100px;
+		}
+	}
+}

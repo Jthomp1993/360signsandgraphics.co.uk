@@ -1,0 +1,30 @@
+@value sm-up, md-up, xl-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	padding-block: var(--top-header-h);
+	text-align: center;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.subTitle {
+		@mixin sub-title;
+		@mixin fluid-clamp margin-bottom, 10, 16;
+	}
+
+	.title {
+		@mixin h-m;
+		@mixin fluid-clamp margin-bottom, 40, 55;
+	}
+
+	.copy {
+		@mixin paragraph-m;
+		max-width: 650px;
+		margin: 0 auto;
+	}
+
+	.button {
+		@mixin fluid-clamp margin-top, 40, 55;
+	}
+}

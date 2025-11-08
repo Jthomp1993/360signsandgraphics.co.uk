@@ -1,0 +1,19 @@
+@value sm-up, md-up, lg-up from '@/app/css/breakpoints.module.css';
+
+.wrapper {
+	--wrapper-padding: min(
+		calc(32px + (100 - 32) * ((100vw - 375px) / (1512 - 375))), 
+		100px
+	);
+
+	padding: 0 var(--wrapper-padding);
+	margin-left: auto;
+	margin-right: auto;
+	max-width: calc(1310px + var(--wrapper-padding) * 2);
+	width: 100%;
+	position: relative;
+
+	/* @media (md-up) {
+		--wrapper-padding: 100px;
+	} */
+}

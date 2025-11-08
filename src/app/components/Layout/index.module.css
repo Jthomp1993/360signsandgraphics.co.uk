@@ -1,0 +1,12 @@
+@value sm-up, md-up, lg-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	overflow: hidden;
+
+	> div {
+		overflow: hidden;
+	}
+}
+
+.innerLayout {}

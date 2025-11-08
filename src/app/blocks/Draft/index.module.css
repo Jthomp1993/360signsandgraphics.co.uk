@@ -1,0 +1,12 @@
+@value sm-up, md-up, lg-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	bottom: 0;
+	display: flex;
+	padding: 10px 0;
+	justify-content: center;
+	z-index: 10;
+}

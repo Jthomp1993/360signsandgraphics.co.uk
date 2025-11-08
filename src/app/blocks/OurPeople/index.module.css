@@ -1,0 +1,175 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes fadeIn {
+	0%,
+	49% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+}
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 50, 150;
+	z-index: 1;
+
+	.headerBlock {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px 30px;
+		flex-direction: column;
+		text-align: center;
+		@mixin fluid-clamp margin-bottom, 20, 120;
+		align-items: center;
+		justify-content: center;
+
+		.title {
+			@mixin h-base;
+			@mixin fluid-text 80, 160;
+			max-width: 100%;
+		}
+
+		.copy {
+			line-height: 1.6;
+			@mixin fluid-text 16, 24;
+			max-width: 100%;
+		}
+
+		@media (md-up) {
+			flex-direction: row;
+			text-align: left;
+			align-items: flex-end;
+			justify-content: flex-start;
+		}
+	}
+
+	.peopleBlock {
+	}
+
+	.person {
+		--bd-c: color-mix(in srgb, currentColor, transparent 50%);
+		position: relative;
+		border-bottom: 1px solid var(--bd-c);
+		cursor: pointer;
+		user-select: none;
+
+		&:first-child {
+			border-top: 1px solid var(--bd-c);
+		}
+
+		&:hover {
+			.marquee {
+				opacity: 1;
+
+				div {
+					animation-play-state: running;
+				}
+			}
+
+			@media (hover: none) {
+				.avatar {
+					opacity: 1;
+				}
+			}
+		}
+
+		.avatar {
+			position: absolute;
+			top: 0;
+			left: 0;
+			aspect-ratio: 1;
+			@mixin fluid-clamp width, 120, 280;
+			border-radius: 50%;
+			z-index: 4;
+			opacity: 0;
+			pointer-events: none;
+			overflow: hidden;
+
+			img {
+				@mixin fill;
+				background: var(--avatar-bg-color);
+
+				& + img {
+					animation: fadeIn 2s infinite linear;
+				}
+			}
+
+			/* On touch devices, the image is centered on the card */
+			@media (hover: none) {
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				@mixin transition opacity;
+			}
+		}
+
+		.personContent {
+			display: flex;
+			gap: 30px;
+			@mixin fluid-clamp min-height, 70, 138;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.name,
+		.role {
+			line-height: 1.6;
+			@mixin fluid-text 16, 24;
+		}
+
+		.name {
+		}
+
+		.role {
+			text-align: right;
+		}
+
+		.marquee {
+			position: absolute;
+			top: -1px;
+			height: calc(100% + 2px);
+			left: 0;
+			width: 100%;
+			background: var(--hot-pink);
+			color: var(--black);
+			overflow: hidden;
+			display: flex;
+			@mixin h-xs;
+			opacity: 0;
+			@mixin transition opacity;
+			z-index: 3;
+			user-select: none;
+
+			div {
+				display: flex;
+				align-items: center;
+				gap: 0.4em;
+				padding-right: 0.4em;
+				flex-shrink: 0;
+				animation: marquee calc(var(--length) * 0.3s) linear infinite;
+				animation-play-state: paused;
+
+				&::after {
+					content: "";
+					display: block;
+					aspect-ratio: 1;
+					width: 0.333em;
+					border-radius: 50%;
+					background: currentColor;
+				}
+			}
+		}
+	}
+}

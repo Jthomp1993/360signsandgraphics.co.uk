@@ -1,0 +1,339 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	padding-top: calc(var(--top-header-h) + 30px);
+	padding-bottom: 150px;
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+
+		@media (md-up) {
+			flex-direction: row;
+			gap: 70px;
+		}
+	}
+
+	.contentCol {
+		display: contents;
+
+		@media (md-up) {
+			display: block;
+		}
+	}
+
+	.title {
+		@mixin h-xl;
+		@mixin fluid-clamp margin-bottom, 25, 30;
+		order: 1;
+	}
+
+	.copy {
+		@mixin fluid-clamp margin-bottom, 40, 25;
+		max-width: 475px;
+		order: 2;
+		p {
+			min-height: 1em;
+
+			&:not([class^="paragraph"]) {
+				@mixin paragraph-xs;
+			}
+		}
+	}
+
+	.contacts {
+		@mixin paragraph-s;
+		order: 4;
+		margin-top: 30px;
+
+		@media (md-up) {
+			margin-top: 0;
+		}
+	}
+
+	.contact {
+		position: relative;
+		border-bottom: 1px solid color-mix(in srgb, currentColor, transparent 50%);
+		padding-block: 25px;
+		@mixin fluid-clamp padding-left, 30, 35;
+
+		svg {
+			position: absolute;
+			bottom: calc(50% - 0.4em);
+			left: 0;
+			width: 12px;
+		}
+
+		a {
+			@mixin fill;
+			z-index: 2;
+
+			[data-label] {
+				position: relative;
+				overflow: hidden;
+				display: block;
+	
+				span,
+				&:before {
+					display: block;
+					@mixin transition transform;
+				}
+	
+				&:before {
+					content: attr(data-label);
+					position: absolute;
+					top: 100%;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			&:hover + [data-label] {
+				span,
+				&:before {
+					transform: translateY(-100%);
+				}
+			}
+		}
+	}
+
+	.people {
+		position: relative;
+		order: 3;
+		display: flex;
+
+		@media (md-up) {
+			flex-grow: 1;
+			margin-left: auto;
+			max-width: 620px;
+		}
+	}
+
+	.peopleInner {
+		display: flex;
+		gap: 30px;
+	}
+
+	.person {
+		position: relative;
+		perspective: 1000px;
+		aspect-ratio: 350/520;
+		@mixin fluid-clamp width, 222, 350;
+		@mixin fluid-clamp min-width, 222, 350;
+
+		@media (md-up) {
+			position: absolute;
+
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+				z-index: 2;
+			}
+
+			&:nth-child(2) {
+				top: 150px;
+				right: 0;
+				z-index: 1;
+			}
+		}
+	}
+
+	.heart {
+		@mixin fluid-clamp --offset, 9, 15;
+		position: absolute;
+		top: var(--offset);
+		right: var(--offset);
+		@mixin fluid-clamp width, 50, 78;
+		aspect-ratio: 1/1;
+		display: flex;
+		z-index: 2;
+		cursor: pointer;
+		border-radius: 50%;
+		background-color: var(--white);
+		color: var(--black);
+		@mixin transition color;
+
+		&:hover,
+		&[data-active] {
+			color: var(--hot-pink);
+
+			.heartFill {
+				fill: var(--hot-pink);
+			}
+		}
+
+		.heartFill {
+			@mixin transition fill;
+		}
+
+		svg {
+			display: block;
+			margin: auto;
+			@mixin fluid-clamp width, 20, 31;
+		}
+	}
+
+	.personInner {
+		@mixin fill;
+		transform-style: preserve-3d;
+	}
+
+	.cardFront,
+	.cardBack {
+		@mixin fill;
+		overflow: hidden;
+		backface-visibility: hidden;
+		transform-style: preserve-3d;
+		@mixin fluid-clamp border-radius, 16, 22;
+
+		img {
+			@mixin fill;
+		}
+	}
+
+	.cardBack {
+		transform: rotateY(180deg);
+	}
+
+	.swipeBlock {
+		@mixin fluid-clamp --margin, 10, 15;
+		@mixin fluid-clamp --border-radius, 8, 13;
+		position: absolute;
+		left: var(--margin);
+		bottom: var(--margin);
+		width: calc(100% - var(--margin) * 2);
+		border-radius: var(--border-radius);
+		@mixin fluid-clamp padding-block, 3, 5;
+		@mixin fluid-clamp padding-inline, 3, 5;
+		background-color: var(--white);
+		color: var(--black);
+
+		.swipeTrack {
+			position: relative;
+			display: flex;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		button {
+			@mixin button-reset;
+			aspect-ratio: 1/1;
+			@mixin fluid-clamp width, 47, 75;
+			border-radius: var(--border-radius);
+			background-color: var(--black);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: 100%;
+				width: 500px;
+				height: 100%;
+				background-color: var(--white);
+			}
+
+			svg {
+				@mixin fluid-clamp width, 14, 22;
+			}
+		}
+
+		span {
+			@mixin fluid-clamp font-size, 12, 17;
+			margin-inline: auto;
+		}
+	}
+}
+
+.personDetails {
+	@mixin fill;
+	padding-top: calc(var(--top-header-h) + 30px);
+	padding-bottom: 150px;
+	background: #000;
+	z-index: 2;
+
+	.wrapper {
+		@media (md-up) {
+			align-items: center;
+		}
+	}
+
+	.cardCol {
+		@mixin fluid-clamp width, 240, 440;
+		@mixin fluid-clamp flex-basis, 240, 440;
+		aspect-ratio: 350/520;
+		order: 3;
+		align-self: center;
+
+		@media (md-up) {
+			order: 0;
+		}
+	}
+
+	.contentCol {
+		max-width: none;
+		flex: 1;
+	}
+
+	.personDetailsTitle {
+		@mixin h-base;
+		@mixin fluid-text 65, 160;
+		@mixin fluid-clamp margin-bottom, 20, 40;
+		clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+		order: 1;
+	}
+
+	.copy {
+		max-width: none;
+	}
+
+	.personDetailsContacts {
+		order: 4;
+	}
+
+	.contact {
+		padding-left: 0;
+
+		[data-label] {
+			position: relative;
+			overflow: hidden;
+			display: block;
+
+			span,
+			&:before {
+				display: block;
+				@mixin transition transform;
+			}
+
+			&:before {
+				content: attr(data-label);
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		a {
+			&:hover + [data-label] {
+				span,
+				&:before {
+					transform: translateY(-100%);
+				}
+			}
+		}
+	}
+
+	.contactLabel {
+		@mixin fluid-text 14, 16;
+	}
+
+	.contactValue {
+		@mixin fluid-text 18, 24;
+	}
+}

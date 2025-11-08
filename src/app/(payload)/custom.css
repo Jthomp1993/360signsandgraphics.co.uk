@@ -1,0 +1,58 @@
+@import "../css/typography.css";
+
+.rich-text-lexical__wrap .ContentEditable__root {
+	font-family: var(--dm-sans);
+}
+
+.file__thumbnail {
+	max-width: calc(var(--base) * 6);
+	height: calc(var(--base) * 6);
+}
+
+.paragraph-xxl {
+	@mixin paragraph-xxl;
+}
+
+.paragraph-xl {
+	@mixin paragraph-xl;
+}
+
+.paragraph-l {
+	@mixin paragraph-l;
+}
+
+.paragraph-m {
+	@mixin paragraph-m;
+}
+
+.paragraph-s {
+	@mixin paragraph-s;
+}
+
+.paragraph-xs {
+	@mixin paragraph-xs;
+}
+
+.LexicalEditorTheme__h1 {
+	@mixin h-xl;
+}
+
+.LexicalEditorTheme__h2 {
+	@mixin h-l;
+}
+
+.LexicalEditorTheme__h3 {
+	@mixin h-m;
+}
+
+.LexicalEditorTheme__h4 {
+	@mixin h-s;
+}
+
+.LexicalEditorTheme__h5 {
+	@mixin h-xs;
+}
+
+.LexicalEditorTheme__h6 {
+	@mixin h-xxs;
+}

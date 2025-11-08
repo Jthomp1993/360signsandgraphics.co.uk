@@ -1,0 +1,197 @@
+@value sm-up, md-up, lg-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	overflow: hidden;
+
+	.wrapper {
+		@mixin fluid-clamp padding-top, 54, 100;
+	}
+
+	.top {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		@mixin fluid-clamp margin-bottom, 40, 125;
+	}
+
+	.bigTitle {
+		@mixin h-m;
+	}
+
+	.logo {
+		width: 40px;
+	}
+
+	.main {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 50px;
+		justify-content: space-between;
+		@mixin fluid-clamp padding-bottom, 50, 75;
+	}
+
+	.contactsLabel,
+	.contactsRowValue,
+	.navLabel,
+	.socialLabel {
+		@mixin paragraph-l;
+	}
+
+	.contactsLabel,
+	.navLabel,
+	.socialLabel {
+		@mixin fluid-clamp margin-bottom, 28, 35;
+	}
+
+	.contactsRowLabel,
+	.navList a,
+	.socialList a {
+		color: var(--ui-accent-grey);
+		@mixin fluid-text 16, 18;
+		line-height: 1.6;
+	}
+
+	.navList,
+	.socialList {
+		display: grid;
+		@mixin fluid-clamp gap, 9, 16;
+	}
+
+	.contacts {
+	}
+
+	.contactsRows {
+		display: grid;
+		@mixin fluid-clamp gap, 28, 31;
+	}
+
+	.contactsRow {
+	}
+
+	.mainRight {
+		display: flex;
+		flex-wrap: wrap;
+		@mixin fluid-clamp row-gap, 25, 65;
+		@mixin fluid-clamp column-gap, 60, 65;
+		max-width: 480px;
+	}
+
+	.nav,
+	.social {
+		max-width: 160px;
+
+		[data-text] {
+			position: relative;
+			overflow: hidden;
+			display: block;
+
+			span {
+				display: block;
+			}
+
+			span,
+			&:after {
+				@mixin transition transform;
+			}
+
+			&:after {
+				content: attr(data-text);
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				color: var(--white);
+			}
+
+			&:hover {
+				span,
+				&:after {
+					transform: translateY(-100%);
+				}
+			}
+		}
+	}
+
+	.nav {
+	}
+
+	.navLabel {
+	}
+
+	.navList {
+	}
+
+	.social {
+	}
+
+	.socialLabel {
+	}
+
+	.socialList {
+	}
+
+	.backToTop {
+		@mixin button-reset;
+		line-height: 1.6;
+		font-size: 18px;
+		display: flex;
+		gap: 20px;
+		align-items: flex-end;
+		width: 100%;
+		text-align: left;
+
+		> span {
+			display: block;
+			@mixin fluid-clamp margin-bottom, -3, 8;
+		}
+
+		i {
+			width: 60px;
+			min-width: 60px;
+			aspect-ratio: 1/1;
+			display: flex;
+			background-color: var(--hot-pink);
+			border-radius: 50%;
+			color: var(--off-black);
+
+			span {
+				position: relative;
+				overflow: hidden;
+				margin: auto;
+			}
+
+			svg {
+				@mixin transition transform;
+
+				+ svg {
+					position: absolute;
+					top: 100%;
+					left: 0;
+				}
+			}
+		}
+
+		&:hover {
+			i svg {
+				transform: translateY(-100%);
+			}
+		}
+	}
+
+	.bottom {
+		border-top: 1px solid color-mix(in srgb, currentColor, transparent 83%);
+		@mixin fluid-clamp padding-block, 25, 35;
+		display: flex;
+		justify-content: space-between;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+
+	.copyright,
+	.devCopyright {
+		@mixin fluid-text 14, 16;
+		line-height: 1.6;
+		color: #bebebe;
+	}
+}

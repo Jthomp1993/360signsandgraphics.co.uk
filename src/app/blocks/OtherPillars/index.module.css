@@ -1,0 +1,88 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 75, 120;
+
+	.wrapper {
+		max-width: calc(1100px + var(--wrapper-padding) * 2);
+	}
+
+	.title {
+		@mixin h-base;
+		@mixin fluid-text 80, 280;
+		text-align: center;
+		@mixin fluid-clamp margin-bottom, 20, 50;
+	}
+
+	.links {
+		position: relative;
+		@mixin fluid-clamp height, 400, 500;
+	}
+
+	.link {
+		@mixin h-xs;
+		position: absolute;
+		@mixin fluid-clamp width, 225, 425;
+
+		a {
+			display: flex;
+			width: 100%;
+			aspect-ratio: 1/1;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: var(--black);
+			background: var(--blue);
+			@mixin fluid-clamp border-radius, 20, 40;
+			flex-direction: column;
+			@mixin transition transform;
+
+			&:hover {
+				transform: scale(0.95);
+
+				> span {
+					&:before,
+					> span {
+						transform: translateY(-100%);
+					}
+				}
+			}
+
+			span {
+				display: block;
+			}
+
+			> span {
+				overflow: hidden;
+				position: relative;
+
+				&:before {
+					content: attr(data-text);
+					position: absolute;
+					top: 100%;
+					left: 0;
+					width: 100%;
+				}
+
+				&:before,
+				> span {
+					padding: 0.25em 0;
+					transition: transform 0.6s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+				}
+			}
+		}
+	}
+
+	.prevLink {
+		top: 0;
+		left: 0;
+		transform: rotate(-3deg);
+	}
+
+	.nextLink {
+		top: 20vh;
+		right: 0;
+		transform: rotate(3deg);
+	}
+}

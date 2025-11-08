@@ -1,0 +1,152 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+.block {
+	position: relative;
+	@mixin fluid-clamp padding-block, 45, 170;
+
+	.wrapper {
+	}
+
+	.line1,
+	.line2 {
+		position: relative;
+		display: flex;
+		@mixin fluid-clamp gap, 12, 40;
+		@mixin fluid-text 100, 280;
+		align-items: flex-end;
+
+		img {
+			width: auto;
+			min-width: 0;
+			height: 0.9em;
+			@mixin fluid-clamp border-radius, 12, 32;
+			flex: 1;
+		}
+	}
+
+	.title {
+		@mixin h-base;
+		line-height: 0.8;
+	}
+
+	.line1 {
+		@mixin fluid-clamp margin-bottom, 12, 40;
+	}
+
+	.line2 {
+		.image1 {
+			@media (sm-up) {
+				aspect-ratio: 1/1;
+				flex: 0 0 auto;
+			}
+		}
+
+		.image2 {
+			display: none;
+
+			@media (sm-up) {
+				display: block;
+			}
+		}
+	}
+
+	.videoPlayButton {
+		display: none;
+
+		@media (sm-up) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate(50%, -50%);
+			z-index: 1;
+			display: block;
+			@mixin fluid-clamp width, 100, 200;
+			cursor: pointer;
+
+			svg {
+				display: block;
+				width: 100%;
+
+				circle {
+					fill: var(--accent-color, #9340ff);
+				}
+
+				g {
+					transform-origin: center;
+					animation: rotate 10s linear infinite;
+				}
+			}
+		}
+	}
+
+	.videoModal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		z-index: 1000;
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	.videoModalContent {
+		position: relative;
+		margin: auto;
+		width: calc(100vw - 2rem);
+		max-width: 1100px;
+		@mixin fluid-clamp border-radius, 20, 40;
+		overflow: hidden;
+		background: #00000038;
+	}
+
+	.vimeoVideo {
+		pointer-events: none;
+	}
+
+	.marqueeText {
+		@mixin h-xxs;
+		position: absolute;
+		left: 0;
+		bottom: .9em;
+		background: #fff;
+		color: #000;
+		width: 100%;
+		padding: 0.7778em 0;
+		display: flex;
+		opacity: 0;
+
+		div {
+			flex-shrink: 0;
+			animation: marquee calc(var(--length) * .7s) linear infinite;
+
+			span {
+				display: inline-block;
+				aspect-ratio: 1/1;
+				width: 0.3889em;
+				border-radius: 50%;
+				background: currentColor;
+				margin-inline: 0.5833em;
+				vertical-align: middle;
+			}
+		}
+	}
+}

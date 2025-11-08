@@ -1,0 +1,7 @@
+# Ignore CSS files with PostCSS mixins to prevent formatting issues
+src/app/css/mixins.css
+# Add other CSS files with mixins as needed
+
+# You can also use patterns like:
+# **/*.css
+# If you want to ignore all CSS files, but this might be too broad 

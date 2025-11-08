@@ -1,0 +1,129 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp margin-block, 45, 200;
+
+	&[data-type="portrait"] + * {
+		@media (md-up) {
+			margin-top: 300px;
+		}
+	}
+
+	.wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 60px;
+	}
+
+	.image {
+		position: relative;
+		margin-left: calc(var(--wrapper-padding) * -1);
+		@mixin fluid-clamp width, 240, 415;
+		order: 2;
+		margin-right: auto;
+
+		img {
+			aspect-ratio: 1/1;
+		}
+
+		&.portrait {
+			aspect-ratio: 1/1;
+
+			img {
+				aspect-ratio: 413/520;
+			}
+
+			@media (md-up) {
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				+ .content {
+					max-width: 755px;
+					margin-left: auto;
+				}
+			}
+		}
+	}
+
+	.content {
+		max-width: 645px;
+		flex-grow: 1;
+		flex-basis: 100%;
+
+		@media (md-up) {
+			max-width: 645px;
+			flex-basis: auto;
+		}
+	}
+
+	.copy {
+		> *:first-child {
+			margin-top: 0;
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+
+		p {
+			margin: 20px 0;
+
+			&:not([class^="paragraph"]) {
+				@mixin paragraph-m;
+			}
+		}
+
+		ol {
+			@mixin h-xs;
+			margin: 30px 0;
+
+			li {
+				@mixin fluid-clamp padding-bottom, 18, 32;
+				@mixin fluid-clamp margin-bottom, 18, 32;
+				position: relative;
+				counter-increment: list-item;
+				@mixin fluid-clamp padding-left, 66, 96;
+				border-bottom: 1px solid
+					color-mix(in srgb, currentColor 50%, transparent);
+
+				&:first-child {
+					padding-top: 0;
+				}
+
+				&:before {
+					content: counter(list-item);
+					position: absolute;
+					top: .55em;
+					transform: translateY(-50%);
+					left: 0;
+					@mixin fluid-text 32, 40;
+					background: var(--accent-color);
+					color: var(--black);
+					aspect-ratio: 1/1;
+					padding: 0 13px;
+					@mixin fluid-clamp min-width, 46, 56;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 8px;
+				}
+
+				&:nth-child(-n + 9):before {
+					content: "0" counter(list-item);
+				}
+			}
+		}
+	}
+
+	.button {
+		@mixin fluid-clamp margin-top, 30, 50;
+	}
+
+	@media (md-up) {
+		.image {
+			order: initial;
+		}
+	}
+}

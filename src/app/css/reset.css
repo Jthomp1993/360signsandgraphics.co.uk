@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+img {
+	object-fit: cover;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	outline: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul, ol {
+	display: block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#root,
+#__next {
+	isolation: isolate;
+}
+
+.b-reset {
+	appearance: none;
+	font-family: inherit;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+	background: none;
+	color: inherit;
+	padding: 0;
+}

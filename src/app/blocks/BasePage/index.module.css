@@ -1,0 +1,61 @@
+@value sm-up, md-up, xl-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	padding-top: var(--top-header-h);
+	padding-bottom: 150px;
+
+	.wrapper {
+	}
+
+	.title {
+		@mixin h-m;
+		@mixin fluid-clamp margin-bottom, 40, 75;
+		max-width: 1200px;
+	}
+
+	.content {
+		max-width: 977px;
+
+		p {
+			min-height: 1em;
+
+			&:not([class*="paragraph-"]) {
+				@mixin paragraph-xs;
+			}
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			@mixin fluid-clamp margin-top, 40, 90;
+			@mixin fluid-clamp margin-bottom, 10, 25;
+		}
+
+		h1 {
+			@mixin h-xl;
+		}
+
+		h2 {
+			@mixin h-l;
+		}
+
+		h3 {
+			@mixin h-m;
+		}
+
+		h4 {
+			@mixin h-s;
+		}
+
+		h5 {
+			@mixin h-xs;
+		}
+
+		h6 {
+			@mixin h-xxs;
+		}
+	}
+}
