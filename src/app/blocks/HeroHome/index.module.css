@@ -1,0 +1,13 @@
+@value sm-up, md-up from '@/app/css/breakpoints.module.css';
+
+.block {
+	position: relative;
+	@mixin fluid-clamp margin-block, 45, 200;
+
+
+	.wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 60px;
+	}
+}

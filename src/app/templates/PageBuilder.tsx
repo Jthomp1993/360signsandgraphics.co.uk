@@ -6,6 +6,9 @@ import dynamic from "next/dynamic";
 const HeroHomepage = dynamic(() => import("@blocks/HeroHomepage"), {
 	loading: () => <div>Loading...</div>,
 });
+const HeroHome = dynamic(() => import("@blocks/HeroHome"), {
+	loading: () => <div>Loading...</div>,
+});
 const StatementText = dynamic(() => import("@blocks/StatementText"), {
 	loading: () => <div>Loading...</div>,
 });
@@ -91,6 +94,13 @@ export const PageBuilderBlock: PageBuilderBlock = (block, idx) => {
 		case "hero-homepage":
 			return (
 				<HeroHomepage
+					key={idx}
+					{...block}
+				/>
+			);
+		case "hero-home":
+			return (
+				<HeroHome
 					key={idx}
 					{...block}
 				/>

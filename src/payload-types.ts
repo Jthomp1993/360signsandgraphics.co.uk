@@ -171,6 +171,7 @@ export interface Page {
         | FloatingTeam
         | FloatingTeam2
         | Hero2
+        | HeroHome
         | HeroCarousel
         | HeroHomepage
         | HeroWithImage
@@ -387,6 +388,29 @@ export interface Hero2 {
   image: string | Media;
   id?: string | null;
   blockType: 'hero2';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroHome".
+ */
+export interface HeroHome {
+  blockName?: string | null;
+  label: string;
+  heading: string;
+  description: string;
+  image: string | Media;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    label?: string | null;
+    reference?: {
+      relationTo: 'pages';
+      value: string | Page;
+    } | null;
+    url?: string | null;
+  };
+  id?: string | null;
+  blockType: 'hero-home';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1016,6 +1040,7 @@ export interface PagesSelect<T extends boolean = true> {
         'floating-team'?: T | FloatingTeamSelect<T>;
         'floating-team2'?: T | FloatingTeam2Select<T>;
         hero2?: T | Hero2Select<T>;
+        'hero-home'?: T | HeroHomeSelect<T>;
         'hero-carousel'?: T | HeroCarouselSelect<T>;
         'hero-homepage'?: T | HeroHomepageSelect<T>;
         'hero-with-image'?: T | HeroWithImageSelect<T>;
@@ -1181,6 +1206,27 @@ export interface Hero2Select<T extends boolean = true> {
   copy?: T;
   copyHTML?: T;
   image?: T;
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroHome_select".
+ */
+export interface HeroHomeSelect<T extends boolean = true> {
+  blockName?: T;
+  label?: T;
+  heading?: T;
+  description?: T;
+  image?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        label?: T;
+        reference?: T;
+        url?: T;
+      };
   id?: T;
 }
 /**

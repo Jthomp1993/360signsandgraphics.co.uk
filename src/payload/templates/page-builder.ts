@@ -7,6 +7,7 @@ import FloatingNumbers from "@blocks/FloatingNumbers/schema";
 import FloatingTeam2 from "@blocks/FloatingTeam2/schema";
 import FloatingTeam from "@blocks/FloatingTeam/schema";
 import Hero2 from "@blocks/Hero2/schema";
+import HeroHome from "@blocks/HeroHome/schema";
 import HeroCarousel from "@blocks/HeroCarousel/schema";
 import HeroHomepage from "@blocks/HeroHomepage/schema";
 import HeroWithImage from "@blocks/HeroWithImage/schema";
@@ -37,6 +38,7 @@ const PageBuilderTemplate = (): BlocksField => ({
 		FloatingTeam,
 		FloatingTeam2,
 		Hero2,
+		HeroHome,
 		HeroCarousel,
 		HeroHomepage,
 		HeroWithImage,
